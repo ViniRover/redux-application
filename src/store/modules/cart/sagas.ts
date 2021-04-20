@@ -9,6 +9,7 @@ import {
 import { State } from '../..';
 import { api } from '../../../services/api';
 import { addProductToCartFailed, addProductToCartRequest, addProductToCartSuccess } from './actions';
+import { ActionTypes } from './types';
 
 type CheckStockRequest = ReturnType<typeof addProductToCartRequest>;
 
@@ -40,5 +41,5 @@ function* checkProductStock({ payload }: CheckStockRequest) {
 }
 
 export default all([
-  takeLatest('ADD_PRODUCT_TO_CART_REQUEST', checkProductStock),
+  takeLatest(ActionTypes.addProductToCartRequest, checkProductStock),
 ]);
